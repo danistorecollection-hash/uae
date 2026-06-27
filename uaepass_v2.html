@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE PASS | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1a1a1a; overflow-x: hidden; }
+
+        /* Navigation */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0, 168, 107, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 0.8rem 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon { width: 36px; height: 36px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .logo-icon::before { content: ''; position: absolute; width: 20px; height: 20px; border: 3px solid #00A86B; border-radius: 50%; border-top-color: transparent; transform: rotate(-45deg); }
+        .logo-icon::after { content: ''; position: absolute; width: 6px; height: 6px; background: #00A86B; border-radius: 50%; top: 6px; }
+        .logo-text { font-weight: 700; font-size: 1.3rem; color: white; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: rgba(255,255,255,0.9); font-weight: 500; font-size: 0.9rem; transition: color 0.3s; padding: 0.5rem 0; }
+        .nav-links a:hover { color: white; }
+        .nav-links a.active { color: white; border-bottom: 2px solid white; }
+        .nav-login { background: #1a1a1a; color: white; padding: 0.5rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: all 0.3s; }
+        .nav-login:hover { background: #333; }
+
+        /* Hero Section */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: #00A86B; position: relative; overflow: hidden; padding-top: 70px; }
+        .hero-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%; }
+        .hero-content { color: white; position: relative; z-index: 1; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+        .hero-content .subtitle { font-size: 1.3rem; font-weight: 400; opacity: 0.95; margin-bottom: 1.5rem; }
+        .hero-content .desc { font-size: 0.95rem; opacity: 0.85; line-height: 1.7; margin-bottom: 2rem; max-width: 500px; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-sign { background: #1a1a1a; color: white; padding: 0.8rem 1.5rem; border-radius: 8px; border: none; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-sign:hover { background: #333; transform: translateY(-1px); }
+        .btn-verify { background: transparent; color: white; padding: 0.8rem 1.5rem; border-radius: 8px; border: 2px solid rgba(255,255,255,0.4); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-verify:hover { background: rgba(255,255,255,0.1); border-color: white; }
+        .btn-video { background: transparent; color: white; padding: 0.8rem 1.5rem; border-radius: 8px; border: none; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .partners { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); }
+        .partners-label { font-size: 0.75rem; opacity: 0.7; margin-bottom: 1rem; }
+        .partners-logos { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+
+        /* Phone Mockup */
+        .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; }
+        .phone-mockup { width: 280px; height: 570px; background: #000; border-radius: 40px; padding: 12px; box-shadow: 0 25px 60px rgba(0,0,0,0.3); position: relative; transform: perspective(1000px) rotateY(-5deg) rotateX(5deg); transition: transform 0.4s; }
+        .phone-mockup:hover { transform: perspective(1000px) rotateY(-2deg) rotateX(2deg) translateY(-10px); }
+        .phone-screen { width: 100%; height: 100%; background: white; border-radius: 32px; overflow: hidden; position: relative; }
+        .app-header { background: #00A86B; padding: 50px 20px 20px; text-align: center; color: white; }
+        .app-avatar { width: 60px; height: 60px; background: #e0e0e0; border-radius: 50%; margin: 0 auto 8px; border: 3px solid white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .app-name { font-weight: 700; font-size: 1rem; margin-bottom: 2px; }
+        .app-status { font-size: 0.75rem; opacity: 0.9; display: flex; align-items: center; justify-content: center; gap: 4px; }
+        .app-status::before { content: '✓'; width: 14px; height: 14px; background: white; color: #00A86B; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 800; }
+        .app-body { padding: 15px; }
+        .app-feature { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 10px; margin-bottom: 8px; background: #f8f9fa; }
+        .app-feature-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .app-feature-icon.gold { background: #FFF8E1; }
+        .app-feature-icon.blue { background: #E3F2FD; }
+        .app-feature-text h4 { font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 2px; }
+        .app-feature-text p { font-size: 0.7rem; color: #888; }
+        .app-nav { position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-around; padding: 10px 0; background: white; border-top: 1px solid #eee; }
+        .app-nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 0.6rem; color: #00A86B; font-weight: 600; }
+        .app-nav-item.inactive { color: #aaa; }
+
+        /* Features Section */
+        .features { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem; }
+        .section-header p { color: #666; font-size: 1rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .feature-card { background: #fff; border-radius: 16px; padding: 2rem; border: 1px solid #eee; transition: all 0.3s; }
+        .feature-card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.08); transform: translateY(-3px); }
+        .feature-icon { width: 50px; height: 50px; background: #f0f9f5; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-size: 1.5rem; }
+        .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .feature-card p { color: #666; line-height: 1.6; font-size: 0.9rem; margin-bottom: 1rem; }
+        .feature-link { color: #00A86B; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+        /* Detail Sections */
+        .detail-section { padding: 4rem 2rem; background: #f8f9fa; }
+        .detail-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .detail-content h3 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+        .detail-content p { color: #555; line-height: 1.7; margin-bottom: 1.5rem; }
+        .detail-link { color: #00A86B; text-decoration: none; font-weight: 600; }
+        .phone-small { width: 220px; height: 440px; background: #000; border-radius: 30px; padding: 10px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .phone-small-screen { width: 100%; height: 100%; background: white; border-radius: 24px; overflow: hidden; }
+
+        /* Steps Section */
+        .steps-section { padding: 5rem 2rem; background: white; }
+        .steps-container { max-width: 1000px; margin: 0 auto; }
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+        .step-card { text-align: center; padding: 2rem; }
+        .step-number { width: 60px; height: 60px; background: #00A86B; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.5rem; margin: 0 auto 1.5rem; }
+        .step-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .step-card p { color: #666; font-size: 0.9rem; line-height: 1.6; }
+
+        /* Verification CTA Section */
+        .verify-cta { padding: 5rem 2rem; background: #00A86B; text-align: center; color: white; }
+        .verify-cta h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .verify-cta p { opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem; }
+        .btn-start-verify { background: white; color: #00A86B; padding: 1rem 3rem; border-radius: 10px; border: none; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .btn-start-verify:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+
+        /* Modal Overlay */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; overflow-y: auto; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal { background: white; border-radius: 20px; padding: 2rem; max-width: 420px; width: 90%; text-align: center; transform: scale(0.9); transition: transform 0.3s; position: relative; margin: 2rem auto; }
+        .modal-overlay.active .modal { transform: scale(1); }
+        .modal-close { position: absolute; top: 0.8rem; right: 0.8rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #999; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .modal-close:hover { background: #f5f5f5; color: #333; }
+        .modal-icon { width: 60px; height: 60px; background: #f0f9f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.8rem; }
+        .modal h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #1a1a1a; }
+        .modal p { color: #666; margin-bottom: 1.5rem; font-size: 0.9rem; }
+
+        /* Phone Input */
+        .phone-input-group { display: flex; gap: 0; border: 2px solid #e0e0e0; border-radius: 10px; overflow: hidden; margin-bottom: 1rem; }
+        .phone-input-group:focus-within { border-color: #00A86B; }
+        .country-select { display: flex; align-items: center; gap: 6px; padding: 0 12px; background: #f8f9fa; border-right: 1px solid #e0e0e0; font-size: 0.9rem; font-weight: 600; color: #333; cursor: pointer; }
+        .country-select span { font-size: 1.2rem; }
+        .phone-input { flex: 1; padding: 14px 16px; border: none; outline: none; font-size: 1rem; font-family: inherit; }
+        .phone-input::placeholder { color: #aaa; }
+        .btn-next { width: 100%; padding: 14px; background: #00A86B; color: white; border: none; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; }
+        .btn-next:hover { background: #008F5D; }
+        .btn-next:disabled { background: #ccc; cursor: not-allowed; }
+
+        /* Language Toggle */
+        .lang-toggle { position: absolute; top: 0.8rem; left: 0.8rem; display: flex; gap: 4px; background: #f5f5f5; border-radius: 20px; padding: 3px; }
+        .lang-btn { padding: 4px 12px; border: none; border-radius: 16px; font-size: 0.75rem; font-weight: 600; cursor: pointer; background: transparent; color: #666; transition: all 0.3s; }
+        .lang-btn.active { background: #00A86B; color: white; }
+
+        /* ID Input Page */
+        .id-input-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; text-align: left; }
+        .id-input-group label { font-size: 0.85rem; font-weight: 600; color: #555; }
+        .id-input { padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+        .id-input:focus { border-color: #00A86B; }
+        .id-input::placeholder { color: #aaa; }
+        .divider { display: flex; align-items: center; gap: 1rem; margin: 1rem 0; color: #999; font-size: 0.85rem; }
+        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #e0e0e0; }
+
+        /* Details Form Page */
+        .details-form { text-align: left; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+        .form-group label { font-size: 0.85rem; font-weight: 600; color: #555; }
+        .form-group input, .form-group select { padding: 12px 14px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 0.95rem; outline: none; transition: border-color 0.3s; font-family: inherit; }
+        .form-group input:focus, .form-group select:focus { border-color: #00A86B; }
+        .form-group input::placeholder { color: #aaa; }
+        .form-group.full { grid-column: 1 / -1; }
+        .progress-bar { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; justify-content: center; }
+        .progress-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0e0e0; transition: all 0.3s; }
+        .progress-dot.active { background: #00A86B; }
+        .progress-dot.completed { background: #00A86B; opacity: 0.5; }
+
+        /* Error message */
+        .error-msg { color: #e74c3c; font-size: 0.8rem; text-align: left; margin-top: -0.5rem; margin-bottom: 0.8rem; display: none; }
+        .error-msg.show { display: block; }
+        .input-error { border-color: #e74c3c !important; }
+
+        /* ===== CARD PAGE STYLES ===== */
+        .card-preview {
+            width: 100%;
+            max-width: 360px;
+            height: 200px;
+            border-radius: 16px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .card-chip {
+            width: 40px;
+            height: 30px;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+            border-radius: 6px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.2);
+        }
+        .card-chip::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 20px;
+            border: 1px solid rgba(0,0,0,0.3);
+            border-radius: 4px;
+        }
+        .card-chip::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 2px;
+            background: rgba(0,0,0,0.3);
+        }
+        .card-logo {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 1px;
+        }
+        .card-number-display {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 3px;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .card-holder-display {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .card-expiry-display {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+        }
+        .card-expiry-display span {
+            display: block;
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 2px;
+        }
+        .bank-select-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .bank-select-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .bank-select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+            font-family: inherit;
+            background: white;
+            cursor: pointer;
+        }
+        .bank-select:focus { border-color: #00A86B; }
+        .card-type-icons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+        .card-type-icon {
+            width: 40px;
+            height: 26px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: 700;
+            opacity: 0.4;
+            transition: all 0.3s;
+        }
+        .card-type-icon.visa { background: #1a1f71; color: white; }
+        .card-type-icon.mastercard { background: #eb001b; color: white; }
+        .card-type-icon.amex { background: #006fcf; color: white; }
+        .card-type-icon.active { opacity: 1; transform: scale(1.1); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+
+        /* ===== NEW: ACCOUNT COUNT SELECTOR ===== */
+        .account-count-section {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        .account-count-section label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+        .account-count-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .account-count-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #e0e0e0;
+            background: white;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .account-count-btn:hover {
+            border-color: #00A86B;
+            color: #00A86B;
+        }
+        .account-count-btn.active {
+            background: #00A86B;
+            border-color: #00A86B;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* ===== NEW: MULTIPLE CARD FORMS ===== */
+        .card-form-container {
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .card-form-container.active {
+            border-color: #00A86B;
+            background: #f0f9f5;
+        }
+        .card-form-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .card-form-header .card-number-badge {
+            width: 28px;
+            height: 28px;
+            background: #00A86B;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .card-form-header h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .card-forms-wrapper {
+            display: none;
+        }
+        .card-forms-wrapper.show {
+            display: block;
+        }
+
+        /* ===== NEW: COMPLETE VERIFICATION BUTTON ===== */
+        .btn-complete-verify {
+            width: 100%;
+            padding: 16px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .btn-complete-verify:hover { background: #333; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .btn-complete-verify:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        /* ===== NEW: SUCCESS POPUP ===== */
+        .success-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .success-popup-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .success-popup {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.8) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .success-popup-overlay.active .success-popup {
+            transform: scale(1) translateY(0);
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #00A86B;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            animation: successPop 0.5s ease-out;
+        }
+        @keyframes successPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .success-popup h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+        .success-popup p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .success-details {
+            background: #f0f9f5;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .success-details-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+        }
+        .success-details-item:last-child { border-bottom: none; }
+        .success-details-item span:first-child { color: #666; }
+        .success-details-item span:last-child { font-weight: 700; color: #1a1a1a; }
+        .btn-done {
+            width: 100%;
+            padding: 14px;
+            background: #00A86B;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-done:hover { background: #008F5D; transform: translateY(-1px); }
+
+        /* Footer */
+        .footer { background: #1a1a1a; color: #888; padding: 2rem; text-align: center; font-size: 0.85rem; }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content .desc { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-visual { order: -1; }
+            .phone-mockup { width: 240px; height: 490px; }
+            .detail-container { grid-template-columns: 1fr; text-align: center; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .card-preview { max-width: 300px; height: 170px; }
+            .card-number-display { font-size: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2rem; }
+            .phone-mockup { width: 200px; height: 410px; border-radius: 30px; padding: 8px; }
+            .phone-screen { border-radius: 24px; }
+            .card-preview { max-width: 260px; height: 150px; padding: 1rem; }
+            .card-number-display { font-size: 0.9rem; letter-spacing: 2px; }
+            .account-count-btn { width: 36px; height: 36px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">UAE PASS</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Kiosk Locations</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Developers</a></li>
+            </ul>
+            <a href="#" class="nav-login">Login</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>UAE PASS</h1>
+                <p class="subtitle">The first national digital identity for citizens residents and visitors in UAE</p>
+                <p class="desc">
+                    UAE PASS is the first secure national digital identity for citizens, residents and visitors in UAE, 
+                    enabling them to access many online services across various sectors, in addition to providing features 
+                    such as signing and verifying documents digitally, requesting digital versions of official documents, 
+                    and using the same in applying for services from our partners.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-sign" onclick="openPhoneModal()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        Sign Document
+                    </button>
+                    <button class="btn-verify" onclick="openPhoneModal()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Verify Document
+                    </button>
+                    <button class="btn-video">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        Watch Video
+                    </button>
+                </div>
+                <div class="partners">
+                    <p class="partners-label">In Collaboration with</p>
+                    <div class="partners-logos">
+                        <span style="font-weight:700; font-size:0.9rem;">TDRA</span>
+                        <span style="font-weight:700; font-size:0.9rem;">Abu Dhabi Digital Authority</span>
+                        <span style="font-weight:700; font-size:0.9rem;">Smart Dubai</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="app-header">
+                            <div class="app-avatar">👤</div>
+                            <div class="app-name">Salim Ahmad Mahmoud</div>
+                            <div class="app-status">Verified Account</div>
+                        </div>
+                        <div style="display:flex; gap:8px; padding:10px 15px; background:#f8f9fa;">
+                            <div style="flex:1; background:white; padding:8px; border-radius:8px; text-align:center;">
+                                <div style="font-size:0.6rem; color:#888;">Signature</div>
+                                <div style="font-size:0.7rem; color:#00A86B; font-weight:700;">Verified ✓</div>
+                            </div>
+                            <div style="flex:1; background:white; padding:8px; border-radius:8px; text-align:center;">
+                                <div style="font-size:0.6rem; color:#888;">Documents</div>
+                                <div style="font-size:0.7rem; color:#00A86B; font-weight:700;">Available →</div>
+                            </div>
+                        </div>
+                        <div class="app-body">
+                            <div class="app-feature">
+                                <div class="app-feature-icon gold">✍️</div>
+                                <div class="app-feature-text"><h4>Sign Documents</h4><p>Digital signature</p></div>
+                            </div>
+                            <div class="app-feature">
+                                <div class="app-feature-icon blue">🔍</div>
+                                <div class="app-feature-text"><h4>Verify Documents</h4><p>Validate signatures</p></div>
+                            </div>
+                            <div class="app-feature">
+                                <div class="app-feature-icon" style="background:#E8F5E9;">📄</div>
+                                <div class="app-feature-text"><h4>Add Documents</h4><p>Add Documents to your Wallet</p></div>
+                            </div>
+                            <div class="app-feature">
+                                <div class="app-feature-icon" style="background:#FFF3E0;">📷</div>
+                                <div class="app-feature-text"><h4>Scan QR Code</h4><p>Scan QR code to open and validate</p></div>
+                            </div>
+                        </div>
+                        <div class="app-nav">
+                            <div class="app-nav-item"><span>🏠</span>Home</div>
+                            <div class="app-nav-item inactive"><span>📑</span>Documents</div>
+                            <div class="app-nav-item inactive"><span>🔔</span>Notifications</div>
+                            <div class="app-nav-item inactive"><span>👤</span>Profile</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>What you can do with UAE PASS</h2>
+            <p>One account, endless possibilities</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Secure Sign In</h3>
+                <p>Login and sign up to many websites and applications with one account. Access government, semi-government and private entities services easily and securely.</p>
+                <a href="#" class="feature-link">Learn More →</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✍️</div>
+                <h3>Sign Documents Digitally</h3>
+                <p>Sign and verify documents digitally. Download, sign through the UAE PASS app, then share. Verify signatures by uploading documents instantly.</p>
+                <a href="#" class="feature-link">Learn More →</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Documents Sharing</h3>
+                <p>Request and share official documents with various partners. Powered by blockchain technology for optimal traceability and security.</p>
+                <a href="#" class="feature-link">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail Section 1 -->
+    <section class="detail-section">
+        <div class="detail-container">
+            <div class="detail-content">
+                <h3>Login and sign up to many websites and applications with one account</h3>
+                <p>UAE PASS enables users to login and access many government, semi government and private entities services easily and securely with few simple steps.</p>
+                <a href="#" class="detail-link">learn more about the services you can reach through UAE PASS digital id →</a>
+            </div>
+            <div class="detail-image">
+                <div class="phone-small">
+                    <div class="phone-small-screen">
+                        <div style="background:#00A86B; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; padding:20px;">
+                            <div style="font-size:3rem; margin-bottom:1rem;">🔐</div>
+                            <div style="font-weight:700; font-size:1.1rem; text-align:center;">Secure Login</div>
+                            <div style="font-size:0.8rem; opacity:0.8; text-align:center; margin-top:0.5rem;">One account for all services</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail Section 2 -->
+    <section class="detail-section" style="background:white;">
+        <div class="detail-container">
+            <div class="detail-image" style="order:2;">
+                <div class="phone-small">
+                    <div class="phone-small-screen">
+                        <div style="background:#f8f9fa; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px;">
+                            <div style="background:white; width:90%; height:60%; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
+                                <div style="font-size:2rem;">📄</div>
+                                <div style="font-weight:700; color:#333;">Document.pdf</div>
+                                <div style="background:#00A86B; color:white; padding:6px 20px; border-radius:20px; font-size:0.7rem; font-weight:600;">SIGNED ✓</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-content" style="order:1;">
+                <h3>Sign Documents Digitally</h3>
+                <p>You can now easily sign a document digitally with UAE PASS. Just download a document, sign it through the UAE PASS app or selfcare portal, then share it. You can also verify digital signatures by uploading a document and validating it as needed from the verify feature available on all channels.</p>
+                <a href="#" class="detail-link">learn more about the services you can reach through UAE PASS digital id →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail Section 3 -->
+    <section class="detail-section">
+        <div class="detail-container">
+            <div class="detail-content">
+                <h3>Request and Share Official Documents</h3>
+                <p>UAE PASS enables you to request a digital version of your official documents from different entities in the country. This feature eliminates the need for paper and physical visits to service providers, saving you time and effort. It is also powered by blockchain technology, providing you with optimal traceability and security on your online transactions.</p>
+                <a href="#" class="detail-link">learn more about the services you can reach through UAE PASS digital id →</a>
+            </div>
+            <div class="detail-image">
+                <div class="phone-small">
+                    <div class="phone-small-screen">
+                        <div style="background:#f0f9f5; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px;">
+                            <div style="display:flex; flex-direction:column; gap:8px; width:85%;">
+                                <div style="background:white; padding:12px; border-radius:8px; display:flex; align-items:center; gap:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);"><span>🆔</span><div style="font-size:0.75rem; font-weight:600;">Emirates ID</div><span style="margin-left:auto; color:#00A86B;">✓</span></div>
+                                <div style="background:white; padding:12px; border-radius:8px; display:flex; align-items:center; gap:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);"><span>🚗</span><div style="font-size:0.75rem; font-weight:600;">Driving License</div><span style="margin-left:auto; color:#00A86B;">✓</span></div>
+                                <div style="background:white; padding:12px; border-radius:8px; display:flex; align-items:center; gap:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);"><span>🏥</span><div style="font-size:0.75rem; font-weight:600;">Health Card</div><span style="margin-left:auto; color:#00A86B;">✓</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps-section" id="steps">
+        <div class="steps-container">
+            <div class="section-header">
+                <h2>Sign up in 3 Simple Steps</h2>
+                <p>With easy digital onboarding</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Download</h3>
+                    <p>Download the official UAE PASS application through App Store or Google Play Store</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Register</h3>
+                    <p>Register your account using your Emirates ID, GCC ID, or passport</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Verify</h3>
+                    <p>Verify your account through Face Verification OR visiting a Nearest Kiosk</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start Verification CTA -->
+    <section class="verify-cta" id="verify">
+        <h2>Ready to Get Verified?</h2>
+        <p>Start your verification process now and unlock access to all UAE digital services</p>
+        <button class="btn-start-verify" onclick="openPhoneModal()">Start Verification</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 UAE PASS. The official digital identity for the United Arab Emirates.</p>
+    </footer>
+
+    <!-- Phone Number Modal (Step 1) -->
+    <div class="modal-overlay" id="phoneModal" onclick="closeModal(event)">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModalBtn()">×</button>
+            <div class="lang-toggle">
+                <button class="lang-btn active" id="langEn" onclick="setLang('en')">English</button>
+                <button class="lang-btn" id="langAr" onclick="setLang('ar')">العربية</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+            </div>
+            <div class="modal-icon">📱</div>
+            <h3 id="phoneTitle">Enter Your Mobile Number</h3>
+            <p id="phoneDesc">We'll send you a verification code to confirm your identity</p>
+            <div class="phone-input-group">
+                <div class="country-select">
+                    <span>🇦🇪</span>
+                    <span>+971</span>
+                </div>
+                <input type="tel" class="phone-input" id="phoneInput" placeholder="50 123 4567" maxlength="9" oninput="validatePhone()">
+            </div>
+            <div class="error-msg" id="phoneError">Please enter a valid UAE mobile number (9 digits starting with 50, 52, 54, 55, 56, 58)</div>
+            <button class="btn-next" id="nextBtn" onclick="goToIdPage()" disabled>Next</button>
+        </div>
+    </div>
+
+    <!-- ID Number Modal (Step 2) -->
+    <div class="modal-overlay" id="idModal" onclick="closeIdModal(event)">
+        <div class="modal">
+            <button class="modal-close" onclick="closeIdModalBtn()">×</button>
+            <div class="lang-toggle">
+                <button class="lang-btn active" id="idLangEn" onclick="setIdLang('en')">English</button>
+                <button class="lang-btn" id="idLangAr" onclick="setIdLang('ar')">العربية</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-dot completed"></div>
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+            </div>
+            <div class="modal-icon">🆔</div>
+            <h3 id="idTitle">Enter Your Emirates ID Number</h3>
+            <p id="idDesc">Please enter your Emirates ID to continue the verification process</p>
+
+            <div class="id-input-group">
+                <label id="emiratesLabel" for="emiratesId">Emirates ID Number</label>
+                <input type="text" class="id-input" id="emiratesId" placeholder="784-XXXX-XXXXXXX-X" maxlength="18" oninput="formatEmiratesId(this)">
+            </div>
+            <div class="error-msg" id="emiratesError">Emirates ID must start with 784 and be 15 digits total</div>
+
+            <div class="divider" id="orDivider">OR</div>
+
+            <div class="id-input-group">
+                <label id="iqamaLabel" for="iqamaId">Iqama Number</label>
+                <input type="text" class="id-input" id="iqamaId" placeholder="Enter your Iqama number" maxlength="10" oninput="validateId()">
+            </div>
+
+            <button class="btn-next" id="idNextBtn" onclick="goToDetailsPage()" disabled>Next</button>
+        </div>
+    </div>
+
+    <!-- Personal Details Modal (Step 3) -->
+    <div class="modal-overlay" id="detailsModal" onclick="closeDetailsModal(event)">
+        <div class="modal" style="max-width: 480px;">
+            <button class="modal-close" onclick="closeDetailsModalBtn()">×</button>
+            <div class="lang-toggle">
+                <button class="lang-btn active" id="detLangEn" onclick="setDetailsLang('en')">English</button>
+                <button class="lang-btn" id="detLangAr" onclick="setDetailsLang('ar')">العربية</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-dot completed"></div>
+                <div class="progress-dot completed"></div>
+                <div class="progress-dot active"></div>
+            </div>
+            <div class="modal-icon">👤</div>
+            <h3 id="detailsTitle">Personal Details</h3>
+            <p id="detailsDesc">Please fill in your personal information to complete the verification</p>
+
+            <div class="details-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label id="fnameLabel" for="firstName">First Name</label>
+                        <input type="text" id="firstName" placeholder="Enter first name" oninput="validateDetails()">
+                    </div>
+                    <div class="form-group">
+                        <label id="lnameLabel" for="lastName">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Enter last name" oninput="validateDetails()">
+                    </div>
+                </div>
+
+                <div class="form-group full">
+                    <label id="nationalityLabel" for="nationality">Nationality</label>
+                    <select id="nationality" onchange="validateDetails()">
+                        <option value="">Select Nationality</option>
+                        <option value="ae">🇦🇪 United Arab Emirates</option>
+                        <option value="sa">🇸🇦 Saudi Arabia</option>
+                        <option value="in">🇮🇳 India</option>
+                        <option value="pk">🇵🇰 Pakistan</option>
+                        <option value="bd">🇧🇩 Bangladesh</option>
+                        <option value="ph">🇵🇭 Philippines</option>
+                        <option value="eg">🇪🇬 Egypt</option>
+                        <option value="jo">🇯🇴 Jordan</option>
+                        <option value="lb">🇱🇧 Lebanon</option>
+                        <option value="sy">🇸🇾 Syria</option>
+                        <option value="np">🇳🇵 Nepal</option>
+                        <option value="lk">🇱🇰 Sri Lanka</option>
+                        <option value="gb">🇬🇧 United Kingdom</option>
+                        <option value="us">🇺🇸 United States</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label id="dobLabel" for="dob">Date of Birth</label>
+                        <input type="date" id="dob" oninput="validateDetails()">
+                    </div>
+                    <div class="form-group">
+                        <label id="genderLabel" for="gender">Gender</label>
+                        <select id="gender" onchange="validateDetails()">
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group full">
+                    <label id="emailLabel" for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="example@email.com" oninput="validateDetails()">
+                </div>
+
+                <div class="form-group full">
+                    <label id="addressLabel" for="address">Residential Address</label>
+                    <input type="text" id="address" placeholder="Building, Street, Area, City" oninput="validateDetails()">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label id="cityLabel" for="city">City</label>
+                        <select id="city" onchange="validateDetails()">
+                            <option value="">Select City</option>
+                            <option value="dubai">Dubai</option>
+                            <option value="abudhabi">Abu Dhabi</option>
+                            <option value="sharjah">Sharjah</option>
+                            <option value="ajman">Ajman</option>
+                            <option value="rak">Ras Al Khaimah</option>
+                            <option value="fujairah">Fujairah</option>
+                            <option value="umm">Umm Al Quwain</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="emirateLabel" for="emirate">Emirate</label>
+                        <select id="emirate" onchange="validateDetails()">
+                            <option value="">Select</option>
+                            <option value="dubai">Dubai</option>
+                            <option value="abudhabi">Abu Dhabi</option>
+                            <option value="sharjah">Sharjah</option>
+                            <option value="ajman">Ajman</option>
+                            <option value="rak">Ras Al Khaimah</option>
+                            <option value="fujairah">Fujairah</option>
+                            <option value="umm">Umm Al Quwain</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-next" id="detailsNextBtn" onclick="goToCardPage()" disabled>Continue</button>
+        </div>
+    </div>
+
+    <!-- ===== CARD PAGE MODAL (Step 4) - UPDATED ===== -->
+    <div class="modal-overlay" id="cardModal" onclick="closeCardModal(event)">
+        <div class="modal" style="max-width: 520px; max-height: 90vh; overflow-y: auto;">
+            <button class="modal-close" onclick="closeCardModalBtn()">×</button>
+            <div class="lang-toggle">
+                <button class="lang-btn active" id="cardLangEn" onclick="setCardLang('en')">English</button>
+                <button class="lang-btn" id="cardLangAr" onclick="setCardLang('ar')">العربية</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-dot completed"></div>
+                <div class="progress-dot completed"></div>
+                <div class="progress-dot completed"></div>
+                <div class="progress-dot active"></div>
+            </div>
+            <div class="modal-icon">💳</div>
+            <h3 id="cardTitle">Bank Account Details</h3>
+            <p id="cardDesc">Select how many bank accounts you have and enter card details</p>
+
+            <!-- ===== ACCOUNT COUNT SELECTOR ===== -->
+            <div class="account-count-section">
+                <label id="accountCountLabel">How many bank accounts do you have?</label>
+                <div class="account-count-options">
+                    <button class="account-count-btn" data-count="1" onclick="selectAccountCount(1)">1</button>
+                    <button class="account-count-btn" data-count="2" onclick="selectAccountCount(2)">2</button>
+                    <button class="account-count-btn" data-count="3" onclick="selectAccountCount(3)">3</button>
+                    <button class="account-count-btn" data-count="4" onclick="selectAccountCount(4)">4</button>
+                    <button class="account-count-btn" data-count="5" onclick="selectAccountCount(5)">5</button>
+                </div>
+            </div>
+
+            <!-- ===== CARD FORMS CONTAINER ===== -->
+            <div id="cardFormsContainer" class="card-forms-wrapper">
+                <!-- Card forms will be dynamically generated here -->
+            </div>
+
+            <!-- ===== COMPLETE VERIFICATION BUTTON ===== -->
+            <button class="btn-complete-verify" id="completeVerifyBtn" onclick="completeVerification()" disabled>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Complete Your Verification
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== SUCCESS POPUP ===== -->
+    <div class="success-popup-overlay" id="successPopup" onclick="closeSuccessPopup(event)">
+        <div class="success-popup">
+            <div class="success-icon">✓</div>
+            <h2 id="successTitle">Verification Completed!</h2>
+            <p id="successDesc">Your bank account verification has been successfully completed. You can now access all UAE digital services.</p>
+            <div class="success-details" id="successDetails">
+                <div class="success-details-item">
+                    <span>Status</span>
+                    <span style="color:#00A86B;">✓ Verified</span>
+                </div>
+                <div class="success-details-item">
+                    <span>Bank Accounts</span>
+                    <span id="successAccountCount">-</span>
+                </div>
+                <div class="success-details-item">
+                    <span>Date</span>
+                    <span id="successDate">-</span>
+                </div>
+                <div class="success-details-item">
+                    <span>Reference ID</span>
+                    <span id="successRefId">-</span>
+                </div>
+            </div>
+            <button class="btn-done" onclick="closeSuccessPopupBtn()">Done</button>
+        </div>
+    </div>
+
+    <script>
+
+        // ========== LANGUAGE DATA ==========
+        const translations = {
+            en: {
+                phoneTitle: "Enter Your Mobile Number",
+                phoneDesc: "We'll send you a verification code to confirm your identity",
+                phonePlaceholder: "50 123 4567",
+                nextBtn: "Next",
+                idTitle: "Enter Your Emirates ID Number",
+                idDesc: "Please enter your Emirates ID to continue the verification process",
+                emiratesLabel: "Emirates ID Number",
+                emiratesPlaceholder: "784-XXXX-XXXXXXX-X",
+                iqamaLabel: "Iqama Number",
+                iqamaPlaceholder: "Enter your Iqama number",
+                orDivider: "OR",
+                detailsTitle: "Personal Details",
+                detailsDesc: "Please fill in your personal information to complete the verification",
+                fnameLabel: "First Name",
+                fnamePlaceholder: "Enter first name",
+                lnameLabel: "Last Name",
+                lnamePlaceholder: "Enter last name",
+                nationalityLabel: "Nationality",
+                dobLabel: "Date of Birth",
+                genderLabel: "Gender",
+                emailLabel: "Email Address",
+                emailPlaceholder: "example@email.com",
+                addressLabel: "Residential Address",
+                addressPlaceholder: "Building, Street, Area, City",
+                cityLabel: "City",
+                emirateLabel: "Emirate",
+                continueBtn: "Continue",
+                selectNationality: "Select Nationality",
+                selectCity: "Select City",
+                selectGender: "Select",
+                selectEmirate: "Select",
+                male: "Male",
+                female: "Female",
+                phoneError: "Please enter a valid UAE mobile number (9 digits starting with 50, 52, 54, 55, 56, 58)",
+                emiratesError: "Emirates ID must start with 784 and be 15 digits total",
+                // Card page translations
+                cardTitle: "Bank Account Details",
+                cardDesc: "Select how many bank accounts you have and enter card details",
+                accountCountLabel: "How many bank accounts do you have?",
+                bankLabel: "Select Your Bank",
+                selectBank: "-- Select Bank --",
+                cardNumberLabel: "Card Number",
+                cardNumberPlaceholder: "1234 5678 9012 3456",
+                expiryLabel: "Expiry Date",
+                expiryPlaceholder: "MM/YY",
+                cvcLabel: "CVC",
+                cvcPlaceholder: "123",
+                cardHolderLabel: "Card Holder Name",
+                cardHolderPlaceholder: "Enter name as shown on card",
+                completeVerify: "Complete Your Verification",
+                successTitle: "Verification Completed!",
+                successDesc: "Your bank account verification has been successfully completed. You can now access all UAE digital services.",
+                cardNumberError: "Please enter a valid 16-digit Visa or Mastercard number",
+                expiryError: "Please enter a valid future expiry date",
+                cvcError: "CVC must be exactly 3 digits"
+            },
+            ar: {
+                phoneTitle: "أدخل رقم هاتفك المحمول",
+                phoneDesc: "سنرسل لك رمز التحقق لتأكيد هويتك",
+                phonePlaceholder: "٥٠ ١٢٣ ٤٥٦٧",
+                nextBtn: "التالي",
+                idTitle: "أدخل رقم الهوية الإماراتية",
+                idDesc: "الرجاء إدخال رقم الهوية الإماراتية لمتابعة عملية التحقق",
+                emiratesLabel: "رقم الهوية الإماراتية",
+                emiratesPlaceholder: "٧٨٤-XXXX-XXXXXXX-X",
+                iqamaLabel: "رقم الإقامة",
+                iqamaPlaceholder: "أدخل رقم الإقامة الخاص بك",
+                orDivider: "أو",
+                detailsTitle: "البيانات الشخصية",
+                detailsDesc: "يرجى ملء المعلومات الشخصية لإكمال التحقق",
+                fnameLabel: "الاسم الأول",
+                fnamePlaceholder: "أدخل الاسم الأول",
+                lnameLabel: "اسم العائلة",
+                lnamePlaceholder: "أدخل اسم العائلة",
+                nationalityLabel: "الجنسية",
+                dobLabel: "تاريخ الميلاد",
+                genderLabel: "الجنس",
+                emailLabel: "عنوان البريد الإلكتروني",
+                emailPlaceholder: "example@email.com",
+                addressLabel: "عنوان السكن",
+                addressPlaceholder: "المبنى، الشارع، المنطقة، المدينة",
+                cityLabel: "المدينة",
+                emirateLabel: "الإمارة",
+                continueBtn: "متابعة",
+                selectNationality: "اختر الجنسية",
+                selectCity: "اختر المدينة",
+                selectGender: "اختر",
+                selectEmirate: "اختر",
+                male: "ذكر",
+                female: "أنثى",
+                phoneError: "الرجاء إدخال رقم هاتف إماراتي صحيح (9 أرقام تبدأ بـ 50 أو 52 أو 54 أو 55 أو 56 أو 58)",
+                emiratesError: "يجب أن يبدأ رقم الهوية الإماراتية بـ 784 ويكون 15 رقماً",
+                // Card page translations
+                cardTitle: "تفاصيل الحساب البنكي",
+                cardDesc: "اختر عدد الحسابات البنكية وأدخل تفاصيل البطاقة",
+                accountCountLabel: "كم عدد الحسابات البنكية لديك؟",
+                bankLabel: "اختر بنكك",
+                selectBank: "-- اختر البنك --",
+                cardNumberLabel: "رقم البطاقة",
+                cardNumberPlaceholder: "١٢٣٤ ٥٦٧٨ ٩٠١٢ ٣٤٥٦",
+                expiryLabel: "تاريخ الانتهاء",
+                expiryPlaceholder: "شش/سس",
+                cvcLabel: "رمز التحقق",
+                cvcPlaceholder: "١٢٣",
+                cardHolderLabel: "اسم حامل البطاقة",
+                cardHolderPlaceholder: "أدخل الاسم كما هو مكتوب على البطاقة",
+                completeVerify: "أكمل التحقق",
+                successTitle: "اكتمل التحقق!",
+                successDesc: "تم إكمال التحقق من حسابك البنكي بنجاح. يمكنك الآن الوصول إلى جميع الخدمات الرقمية في الإمارات.",
+                cardNumberError: "الرجاء إدخال رقم بطاقة Visa أو Mastercard صحيح مكون من 16 رقماً",
+                expiryError: "الرجاء إدخال تاريخ انتهاء صالح في المستقبل",
+                cvcError: "يجب أن يكون رمز التحقق 3 أرقام بالضبط"
+            }
+        };
+
+        let currentLang = 'en';
+        let selectedAccountCount = 0;
+        let cardFormData = {};
+
+        // ========== LANGUAGE FUNCTIONS ==========
+        function setLang(lang) {
+            currentLang = lang;
+            document.getElementById('langEn').classList.toggle('active', lang === 'en');
+            document.getElementById('langAr').classList.toggle('active', lang === 'ar');
+            document.getElementById('phoneTitle').textContent = translations[lang].phoneTitle;
+            document.getElementById('phoneDesc').textContent = translations[lang].phoneDesc;
+            document.getElementById('phoneInput').placeholder = translations[lang].phonePlaceholder;
+            document.getElementById('nextBtn').textContent = translations[lang].nextBtn;
+            document.getElementById('phoneError').textContent = translations[lang].phoneError;
+        }
+
+        function setIdLang(lang) {
+            currentLang = lang;
+            document.getElementById('idLangEn').classList.toggle('active', lang === 'en');
+            document.getElementById('idLangAr').classList.toggle('active', lang === 'ar');
+            document.getElementById('idTitle').textContent = translations[lang].idTitle;
+            document.getElementById('idDesc').textContent = translations[lang].idDesc;
+            document.getElementById('emiratesLabel').textContent = translations[lang].emiratesLabel;
+            document.getElementById('emiratesId').placeholder = translations[lang].emiratesPlaceholder;
+            document.getElementById('iqamaLabel').textContent = translations[lang].iqamaLabel;
+            document.getElementById('iqamaId').placeholder = translations[lang].iqamaPlaceholder;
+            document.getElementById('orDivider').textContent = translations[lang].orDivider;
+            document.getElementById('idNextBtn').textContent = translations[lang].nextBtn;
+            document.getElementById('emiratesError').textContent = translations[lang].emiratesError;
+        }
+
+        function setDetailsLang(lang) {
+            currentLang = lang;
+            document.getElementById('detLangEn').classList.toggle('active', lang === 'en');
+            document.getElementById('detLangAr').classList.toggle('active', lang === 'ar');
+            document.getElementById('detailsTitle').textContent = translations[lang].detailsTitle;
+            document.getElementById('detailsDesc').textContent = translations[lang].detailsDesc;
+            document.getElementById('fnameLabel').textContent = translations[lang].fnameLabel;
+            document.getElementById('firstName').placeholder = translations[lang].fnamePlaceholder;
+            document.getElementById('lnameLabel').textContent = translations[lang].lnameLabel;
+            document.getElementById('lastName').placeholder = translations[lang].lnamePlaceholder;
+            document.getElementById('nationalityLabel').textContent = translations[lang].nationalityLabel;
+            document.getElementById('dobLabel').textContent = translations[lang].dobLabel;
+            document.getElementById('genderLabel').textContent = translations[lang].genderLabel;
+            document.getElementById('emailLabel').textContent = translations[lang].emailLabel;
+            document.getElementById('email').placeholder = translations[lang].emailPlaceholder;
+            document.getElementById('addressLabel').textContent = translations[lang].addressLabel;
+            document.getElementById('address').placeholder = translations[lang].addressPlaceholder;
+            document.getElementById('cityLabel').textContent = translations[lang].cityLabel;
+            document.getElementById('emirateLabel').textContent = translations[lang].emirateLabel;
+            document.getElementById('detailsNextBtn').textContent = translations[lang].continueBtn;
+            const natSelect = document.getElementById('nationality');
+            if(natSelect.options[0]) natSelect.options[0].text = translations[lang].selectNationality;
+            const citySelect = document.getElementById('city');
+            if(citySelect.options[0]) citySelect.options[0].text = translations[lang].selectCity;
+            const genderSelect = document.getElementById('gender');
+            if(genderSelect.options[0]) genderSelect.options[0].text = translations[lang].selectGender;
+            if(genderSelect.options[1]) genderSelect.options[1].text = translations[lang].male;
+            if(genderSelect.options[2]) genderSelect.options[2].text = translations[lang].female;
+            const emirateSelect = document.getElementById('emirate');
+            if(emirateSelect.options[0]) emirateSelect.options[0].text = translations[lang].selectEmirate;
+        }
+
+        function setCardLang(lang) {
+            currentLang = lang;
+            document.getElementById('cardLangEn').classList.toggle('active', lang === 'en');
+            document.getElementById('cardLangAr').classList.toggle('active', lang === 'ar');
+            document.getElementById('cardTitle').textContent = translations[lang].cardTitle;
+            document.getElementById('cardDesc').textContent = translations[lang].cardDesc;
+            document.getElementById('accountCountLabel').textContent = translations[lang].accountCountLabel;
+            document.getElementById('completeVerifyBtn').innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>' + translations[lang].completeVerify;
+            document.getElementById('successTitle').textContent = translations[lang].successTitle;
+            document.getElementById('successDesc').textContent = translations[lang].successDesc;
+            // Update all card form labels
+            updateCardFormLabels(lang);
+        }
+
+        function updateCardFormLabels(lang) {
+            for (let i = 1; i <= 5; i++) {
+                const bankLabel = document.getElementById('bankLabel_' + i);
+                const cardNumLabel = document.getElementById('cardNumberLabel_' + i);
+                const expiryLabel = document.getElementById('expiryLabel_' + i);
+                const cvcLabel = document.getElementById('cvcLabel_' + i);
+                const holderLabel = document.getElementById('cardHolderLabel_' + i);
+                const bankSelect = document.getElementById('bankSelect_' + i);
+                const cardNumInput = document.getElementById('cardNumber_' + i);
+                const expiryInput = document.getElementById('expiryDate_' + i);
+                const cvcInput = document.getElementById('cvc_' + i);
+                const holderInput = document.getElementById('cardHolderName_' + i);
+
+                if (bankLabel) bankLabel.textContent = translations[lang].bankLabel;
+                if (cardNumLabel) cardNumLabel.textContent = translations[lang].cardNumberLabel;
+                if (cardNumInput) cardNumInput.placeholder = translations[lang].cardNumberPlaceholder;
+                if (expiryLabel) expiryLabel.textContent = translations[lang].expiryLabel;
+                if (expiryInput) expiryInput.placeholder = translations[lang].expiryPlaceholder;
+                if (cvcLabel) cvcLabel.textContent = translations[lang].cvcLabel;
+                if (cvcInput) cvcInput.placeholder = translations[lang].cvcPlaceholder;
+                if (holderLabel) holderLabel.textContent = translations[lang].cardHolderLabel;
+                if (holderInput) holderInput.placeholder = translations[lang].cardHolderPlaceholder;
+                if (bankSelect && bankSelect.options[0]) bankSelect.options[0].text = translations[lang].selectBank;
+            }
+        }
+
+        // ========== PHONE MODAL ==========
+        function openPhoneModal() {
+            const modal = document.getElementById('phoneModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => document.getElementById('phoneInput').focus(), 300);
+        }
+
+        function closeModal(e) {
+            if (e.target === e.currentTarget) {
+                document.getElementById('phoneModal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+                resetPhoneForm();
+            }
+        }
+
+        function closeModalBtn() {
+            document.getElementById('phoneModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            resetPhoneForm();
+        }
+
+        function resetPhoneForm() {
+            document.getElementById('phoneInput').value = '';
+            document.getElementById('nextBtn').disabled = true;
+            document.getElementById('phoneError').classList.remove('show');
+            document.getElementById('phoneInput').classList.remove('input-error');
+        }
+
+        const validPrefixes = ['50', '52', '54', '55', '56', '58'];
+
+        function validatePhone() {
+            const input = document.getElementById('phoneInput');
+            const btn = document.getElementById('nextBtn');
+            const error = document.getElementById('phoneError');
+            let val = input.value.replace(/\D/g, '');
+            input.value = val;
+            if (val.length >= 2) {
+                const prefix = val.substring(0, 2);
+                const isValidPrefix = validPrefixes.includes(prefix);
+                const isValidLength = val.length === 9;
+                if (!isValidPrefix) {
+                    input.classList.add('input-error');
+                    error.classList.add('show');
+                    btn.disabled = true;
+                    return;
+                }
+                if (isValidLength && isValidPrefix) {
+                    input.classList.remove('input-error');
+                    error.classList.remove('show');
+                    btn.disabled = false;
+                } else {
+                    btn.disabled = true;
+                }
+            } else {
+                input.classList.remove('input-error');
+                error.classList.remove('show');
+                btn.disabled = true;
+            }
+        }
+
+        function goToIdPage() {
+            const phone = document.getElementById('phoneInput').value;
+            const prefix = phone.substring(0, 2);
+            if (!validPrefixes.includes(prefix) || phone.length !== 9) {
+                document.getElementById('phoneError').classList.add('show');
+                document.getElementById('phoneInput').classList.add('input-error');
+                return;
+            }
+            document.getElementById('phoneModal').classList.remove('active');
+            resetPhoneForm();
+            const idModal = document.getElementById('idModal');
+            idModal.classList.add('active');
+            setTimeout(() => document.getElementById('emiratesId').focus(), 300);
+        }
+
+        // ========== ID MODAL ==========
+        function closeIdModal(e) {
+            if (e.target === e.currentTarget) {
+                document.getElementById('idModal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+                resetIdForm();
+            }
+        }
+
+        function closeIdModalBtn() {
+            document.getElementById('idModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            resetIdForm();
+        }
+
+        function resetIdForm() {
+            document.getElementById('emiratesId').value = '';
+            document.getElementById('iqamaId').value = '';
+            document.getElementById('idNextBtn').disabled = true;
+            document.getElementById('emiratesError').classList.remove('show');
+            document.getElementById('emiratesId').classList.remove('input-error');
+        }
+
+        function formatEmiratesId(input) {
+            let val = input.value.replace(/\D/g, '');
+            if (val.length > 15) val = val.substring(0, 15);
+            let formatted = '';
+            if (val.length > 0) formatted = val.substring(0, 3);
+            if (val.length > 3) formatted += '-' + val.substring(3, 7);
+            if (val.length > 7) formatted += '-' + val.substring(7, 14);
+            if (val.length > 14) formatted += '-' + val.substring(14, 15);
+            input.value = formatted;
+            const error = document.getElementById('emiratesError');
+            const digitsOnly = val;
+            if (digitsOnly.length >= 3) {
+                const startsWith784 = digitsOnly.startsWith('784');
+                if (!startsWith784) {
+                    input.classList.add('input-error');
+                    error.classList.add('show');
+                    validateId();
+                    return;
+                } else {
+                    input.classList.remove('input-error');
+                    error.classList.remove('show');
+                }
+            }
+            validateId();
+        }
+
+        function validateId() {
+            const emiratesVal = document.getElementById('emiratesId').value.replace(/\D/g, '');
+            const iqama = document.getElementById('iqamaId').value.trim();
+            const btn = document.getElementById('idNextBtn');
+            const emiratesValid = emiratesVal.startsWith('784') && emiratesVal.length === 15;
+            const iqamaValid = iqama.length >= 5;
+            btn.disabled = !(emiratesValid || iqamaValid);
+        }
+
+        function goToDetailsPage() {
+            const emiratesVal = document.getElementById('emiratesId').value.replace(/\D/g, '');
+            const iqama = document.getElementById('iqamaId').value.trim();
+            const emiratesValid = emiratesVal.startsWith('784') && emiratesVal.length === 15;
+            const iqamaValid = iqama.length >= 5;
+            if (!emiratesValid && !iqamaValid) {
+                document.getElementById('emiratesError').classList.add('show');
+                return;
+            }
+            document.getElementById('idModal').classList.remove('active');
+            resetIdForm();
+            const detailsModal = document.getElementById('detailsModal');
+            detailsModal.classList.add('active');
+            setTimeout(() => document.getElementById('firstName').focus(), 300);
+        }
+
+        // ========== DETAILS MODAL ==========
+        function closeDetailsModal(e) {
+            if (e.target === e.currentTarget) {
+                document.getElementById('detailsModal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+                resetDetailsForm();
+            }
+        }
+
+        function closeDetailsModalBtn() {
+            document.getElementById('detailsModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            resetDetailsForm();
+        }
+
+        function resetDetailsForm() {
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('nationality').value = '';
+            document.getElementById('dob').value = '';
+            document.getElementById('gender').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('city').value = '';
+            document.getElementById('emirate').value = '';
+            document.getElementById('detailsNextBtn').disabled = true;
+        }
+
+        function validateDetails() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const nationality = document.getElementById('nationality').value;
+            const dob = document.getElementById('dob').value;
+            const gender = document.getElementById('gender').value;
+            const email = document.getElementById('email').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value;
+            const emirate = document.getElementById('emirate').value;
+            const btn = document.getElementById('detailsNextBtn');
+            const isValid = firstName && lastName && nationality && dob && gender && email && address && city && emirate;
+            btn.disabled = !isValid;
+        }
+
+        function goToCardPage() {
+            document.getElementById('detailsModal').classList.remove('active');
+            resetDetailsForm();
+            const cardModal = document.getElementById('cardModal');
+            cardModal.classList.add('active');
+            // Reset card page
+            selectedAccountCount = 0;
+            cardFormData = {};
+            document.querySelectorAll('.account-count-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('cardFormsContainer').classList.remove('show');
+            document.getElementById('cardFormsContainer').innerHTML = '';
+            document.getElementById('completeVerifyBtn').disabled = true;
+        }
+
+        // ========== CARD MODAL - NEW MULTI-ACCOUNT SYSTEM ==========
+        function closeCardModal(e) {
+            if (e.target === e.currentTarget) {
+                document.getElementById('cardModal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+                resetCardPage();
+            }
+        }
+
+        function closeCardModalBtn() {
+            document.getElementById('cardModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            resetCardPage();
+        }
+
+        function resetCardPage() {
+            selectedAccountCount = 0;
+            cardFormData = {};
+            document.querySelectorAll('.account-count-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('cardFormsContainer').classList.remove('show');
+            document.getElementById('cardFormsContainer').innerHTML = '';
+            document.getElementById('completeVerifyBtn').disabled = true;
+        }
+
+        function selectAccountCount(count) {
+            selectedAccountCount = count;
+            // Update button styles
+            document.querySelectorAll('.account-count-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (parseInt(btn.dataset.count) === count) {
+                    btn.classList.add('active');
+                }
+            });
+            // Generate card forms
+            generateCardForms(count);
+            document.getElementById('cardFormsContainer').classList.add('show');
+            validateAllCardForms();
+        }
+
+        function generateCardForms(count) {
+            const container = document.getElementById('cardFormsContainer');
+            container.innerHTML = '';
+            const bankOptions = `
+                <option value="">-- Select Bank --</option>
+                <option value="adcb">Abu Dhabi Commercial Bank (ADCB)</option>
+                <option value="adib">Abu Dhabi Islamic Bank (ADIB)</option>
+                <option value="ajman">Ajman Bank</option>
+                <option value="alhilal">Al Hilal Bank</option>
+                <option value="almashreq">Al Mashreq Bank</option>
+                <option value="dubaiislamic">Dubai Islamic Bank</option>
+                <option value="emiratesislamic">Emirates Islamic Bank</option>
+                <option value="emiratesnbd">Emirates NBD</option>
+                <option value="fab">First Abu Dhabi Bank (FAB)</option>
+                <option value="hsbc">HSBC Middle East</option>
+                <option value="mashreq">Mashreq Bank</option>
+                <option value="nbad">National Bank of Abu Dhabi (NBAD)</option>
+                <option value="rakbank">RAKBANK</option>
+                <option value="sharjahislamic">Sharjah Islamic Bank</option>
+                <option value="standardchartered">Standard Chartered Bank</option>
+                <option value="union">Union National Bank</option>
+            `;
+
+            for (let i = 1; i <= count; i++) {
+                const formHtml = `
+                    <div class="card-form-container" id="cardForm_${i}">
+                        <div class="card-form-header">
+                            <div class="card-number-badge">${i}</div>
+                            <h4>Card ${i} Details</h4>
+                        </div>
+
+                        <!-- Card Preview -->
+                        <div class="card-preview" id="cardPreview_${i}">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <div class="card-chip"></div>
+                                <div class="card-logo" id="cardLogo_${i}">VISA</div>
+                            </div>
+                            <div class="card-number-display" id="cardNumberDisplay_${i}">#### #### #### ####</div>
+                            <div class="card-bottom">
+                                <div class="card-holder-display" id="cardHolderDisplay_${i}">CARD HOLDER</div>
+                                <div class="card-expiry-display">
+                                    <span>VALID THRU</span>
+                                    <div id="cardExpiryDisplay_${i}">MM/YY</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Type Icons -->
+                        <div class="card-type-icons">
+                            <div class="card-type-icon visa" id="visaIcon_${i}">VISA</div>
+                            <div class="card-type-icon mastercard" id="masterIcon_${i}">MC</div>
+                            <div class="card-type-icon amex" id="amexIcon_${i}">AMEX</div>
+                        </div>
+
+                        <!-- Bank Selection -->
+                        <div class="bank-select-group">
+                            <label id="bankLabel_${i}" for="bankSelect_${i}">Select Your Bank</label>
+                            <select class="bank-select" id="bankSelect_${i}" onchange="validateCardForm(${i})">
+                                ${bankOptions}
+                            </select>
+                        </div>
+
+                        <!-- Card Number -->
+                        <div class="id-input-group">
+                            <label id="cardNumberLabel_${i}" for="cardNumber_${i}">Card Number</label>
+                            <input type="text" class="id-input" id="cardNumber_${i}" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNumber(this, ${i})">
+                        </div>
+                        <div class="error-msg" id="cardNumberError_${i}">Please enter a valid 16-digit Visa or Mastercard number</div>
+
+                        <!-- Expiry & CVC Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label id="expiryLabel_${i}" for="expiryDate_${i}">Expiry Date</label>
+                                <input type="text" class="id-input" id="expiryDate_${i}" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this, ${i})">
+                            </div>
+                            <div class="form-group">
+                                <label id="cvcLabel_${i}" for="cvc_${i}">CVC</label>
+                                <input type="text" class="id-input" id="cvc_${i}" placeholder="123" maxlength="3" oninput="validateCVC(this, ${i})">
+                            </div>
+                        </div>
+                        <div class="error-msg" id="expiryError_${i}">Please enter a valid future expiry date</div>
+                        <div class="error-msg" id="cvcError_${i}">CVC must be exactly 3 digits</div>
+
+                        <!-- Card Holder Name -->
+                        <div class="id-input-group">
+                            <label id="cardHolderLabel_${i}" for="cardHolderName_${i}">Card Holder Name</label>
+                            <input type="text" class="id-input" id="cardHolderName_${i}" placeholder="Enter name as shown on card" maxlength="50" oninput="validateCardForm(${i})">
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += formHtml;
+            }
+            // Update labels based on current language
+            updateCardFormLabels(currentLang);
+        }
+
+        function formatCardNumber(input, index) {
+            let val = input.value.replace(/\D/g, '');
+            if (val.length > 16) val = val.substring(0, 16);
+            let formatted = '';
+            for (let i = 0; i < val.length; i++) {
+                if (i > 0 && i % 4 === 0) formatted += ' ';
+                formatted += val[i];
+            }
+            input.value = formatted;
+            document.getElementById('cardNumberDisplay_' + index).textContent = formatted || '#### #### #### ####';
+            detectCardType(val, index);
+            validateCardNumber(val, index);
+            validateCardForm(index);
+        }
+
+        function detectCardType(number, index) {
+            const visaIcon = document.getElementById('visaIcon_' + index);
+            const masterIcon = document.getElementById('masterIcon_' + index);
+            const amexIcon = document.getElementById('amexIcon_' + index);
+            const cardLogo = document.getElementById('cardLogo_' + index);
+            if (!visaIcon) return;
+            visaIcon.classList.remove('active');
+            masterIcon.classList.remove('active');
+            amexIcon.classList.remove('active');
+            if (number.length === 0) {
+                cardLogo.textContent = 'VISA';
+                return;
+            }
+            if (number.startsWith('4')) {
+                visaIcon.classList.add('active');
+                cardLogo.textContent = 'VISA';
+            } else if (/^5[1-5]/.test(number) || /^2(2[2-9]|[3-6]|7[01]|720)/.test(number)) {
+                masterIcon.classList.add('active');
+                cardLogo.textContent = 'MC';
+            } else if (/^3[47]/.test(number)) {
+                amexIcon.classList.add('active');
+                cardLogo.textContent = 'AMEX';
+            }
+        }
+
+        function validateCardNumber(number, index) {
+            const error = document.getElementById('cardNumberError_' + index);
+            const input = document.getElementById('cardNumber_' + index);
+            if (!error) return false;
+            if (number.length === 16) {
+                const isVisa = number.startsWith('4');
+                const isMaster = /^5[1-5]/.test(number) || /^2(2[2-9]|[3-6]|7[01]|720)/.test(number);
+                if (isVisa || isMaster) {
+                    input.classList.remove('input-error');
+                    error.classList.remove('show');
+                    return true;
+                } else {
+                    input.classList.add('input-error');
+                    error.classList.add('show');
+                    return false;
+                }
+            } else if (number.length > 0) {
+                input.classList.add('input-error');
+                error.classList.add('show');
+                return false;
+            } else {
+                input.classList.remove('input-error');
+                error.classList.remove('show');
+                return false;
+            }
+        }
+
+        function formatExpiry(input, index) {
+            let val = input.value.replace(/\D/g, '');
+            if (val.length > 4) val = val.substring(0, 4);
+            let formatted = '';
+            if (val.length >= 2) {
+                formatted = val.substring(0, 2) + '/' + val.substring(2);
+            } else {
+                formatted = val;
+            }
+            input.value = formatted;
+            document.getElementById('cardExpiryDisplay_' + index).textContent = formatted || 'MM/YY';
+            validateExpiry(formatted, index);
+            validateCardForm(index);
+        }
+
+        function validateExpiry(expiry, index) {
+            const error = document.getElementById('expiryError_' + index);
+            const input = document.getElementById('expiryDate_' + index);
+            if (!error) return false;
+            if (expiry.length === 5) {
+                const parts = expiry.split('/');
+                const month = parseInt(parts[0]);
+                const year = parseInt('20' + parts[1]);
+                const now = new Date();
+                const currentYear = now.getFullYear();
+                const currentMonth = now.getMonth() + 1;
+                if (month < 1 || month > 12) {
+                    input.classList.add('input-error');
+                    error.classList.add('show');
+                    return false;
+                }
+                if (year < currentYear || (year === currentYear && month < currentMonth)) {
+                    input.classList.add('input-error');
+                    error.classList.add('show');
+                    return false;
+                }
+                input.classList.remove('input-error');
+                error.classList.remove('show');
+                return true;
+            } else if (expiry.length > 0) {
+                input.classList.add('input-error');
+                error.classList.add('show');
+                return false;
+            } else {
+                input.classList.remove('input-error');
+                error.classList.remove('show');
+                return false;
+            }
+        }
+
+        function validateCVC(input, index) {
+            let val = input.value.replace(/\D/g, '');
+            input.value = val;
+            const error = document.getElementById('cvcError_' + index);
+            if (!error) return false;
+            if (val.length === 3) {
+                input.classList.remove('input-error');
+                error.classList.remove('show');
+                validateCardForm(index);
+                return true;
+            } else if (val.length > 0) {
+                input.classList.add('input-error');
+                error.classList.add('show');
+                validateCardForm(index);
+                return false;
+            } else {
+                input.classList.remove('input-error');
+                error.classList.remove('show');
+                validateCardForm(index);
+                return false;
+            }
+        }
+
+        function validateCardForm(index) {
+            const bank = document.getElementById('bankSelect_' + index).value;
+            const cardNum = document.getElementById('cardNumber_' + index).value.replace(/\s/g, '');
+            const expiry = document.getElementById('expiryDate_' + index).value;
+            const cvc = document.getElementById('cvc_' + index).value;
+            const holder = document.getElementById('cardHolderName_' + index).value.trim();
+            const isCardValid = cardNum.length === 16 && (cardNum.startsWith('4') || /^5[1-5]/.test(cardNum) || /^2(2[2-9]|[3-6]|7[01]|720)/.test(cardNum));
+            const isExpiryValid = expiry.length === 5 && validateExpiry(expiry, index);
+            const isCvcValid = cvc.length === 3;
+            const isHolderValid = holder.length > 0;
+            const isValid = bank && isCardValid && isExpiryValid && isCvcValid && isHolderValid;
+            cardFormData[index] = isValid;
+            validateAllCardForms();
+        }
+
+        function validateAllCardForms() {
+            let allValid = selectedAccountCount > 0;
+            for (let i = 1; i <= selectedAccountCount; i++) {
+                if (!cardFormData[i]) {
+                    allValid = false;
+                    break;
+                }
+            }
+            document.getElementById('completeVerifyBtn').disabled = !allValid;
+        }
+
+        function completeVerification() {
+            // Show success popup
+            const popup = document.getElementById('successPopup');
+            document.getElementById('successAccountCount').textContent = selectedAccountCount;
+            document.getElementById('successDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('successRefId').textContent = 'UAE-' + Date.now();
+            popup.classList.add('active');
+        }
+
+        function closeSuccessPopup(e) {
+            if (e.target === e.currentTarget) {
+                document.getElementById('successPopup').classList.remove('active');
+                // Close card modal too
+                document.getElementById('cardModal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+                resetCardPage();
+            }
+        }
+
+        function closeSuccessPopupBtn() {
+            document.getElementById('successPopup').classList.remove('active');
+            document.getElementById('cardModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            resetCardPage();
+        }
+
+        // ========== SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
